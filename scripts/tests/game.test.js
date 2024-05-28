@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { game, newGame, showScore, addTurn, lightsOn } = require("../game");
+const { game, newGame, showScore, addTurn, lightsOn, showTurns } = require("../game");
 
 beforeAll(() => {
 
@@ -36,6 +36,12 @@ describe("game object contains correct keys", () =>{
     });
 
 });
+
+test("turnNumber key exists", () =>{
+    expect("turnNumber" in game).toBe(true);
+});
+
+
 
 describe ("newGame works correctly", () =>{
     beforeAll(() => {
@@ -84,6 +90,13 @@ describe("gameplay works correctly", () =>{
         let button = document.getElementById(game.currentGame[0]);
         lightsOn(game.currentGame[0]);
         expect(button.classList).toContain("light");
+        
+    });
+
+    test("showTurns should update game.turnNumber", () =>{
+        game.turnNumber = 42;
+        showTurns();
+        expect(game.turnNumber).toBe(0);
         
     });
 
