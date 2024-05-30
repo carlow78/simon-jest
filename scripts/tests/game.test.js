@@ -3,7 +3,7 @@
  */
 
 const { default: JSDOMEnvironment } = require("jest-environment-jsdom");
-const { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn } = require("../game");
+const { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn } = require("../game").default;
 
 jest.spyOn(window, "alert").mockImplementation(() => {});
 
